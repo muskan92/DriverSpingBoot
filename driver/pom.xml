@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+
 	</properties>
 
 	<dependencies>
@@ -49,12 +50,23 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+<<<<<<< HEAD
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 	</dependencies>
+=======
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+>>>>>>> 967486748ee7128ce8c7252b54e3e4981b61a9d3
 
 
 	<build>
