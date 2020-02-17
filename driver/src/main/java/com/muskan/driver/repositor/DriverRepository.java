@@ -13,4 +13,7 @@ public interface DriverRepository extends JpaRepository<Driver, Long> {
     List<Driver> findByIsBooked(boolean isBooked);
 
     Optional<Driver> findById(Long id);
+
+    List<Driver> findByIsActive(boolean isActive);
+
 }

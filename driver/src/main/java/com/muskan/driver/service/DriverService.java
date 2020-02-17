@@ -11,10 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Entity;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class DriverService {
@@ -24,16 +21,16 @@ public class DriverService {
     @Autowired
     DriverRepository driverRepository;
 
-    public List<Driver> getAllDrivers() throws RecordNotFoundException {
 
+    @Transactional
+    public List<Driver> getAllDrivers() throws RecordNotFoundException {
         List<Driver> driverList = driverRepository.findAll();
         if(driverList.size()==0){
             throw new RecordNotFoundException("No driver found");
         }
-
         return driverList;
     }
-
+    @Transactional
     public Driver getDriver(Long id) throws RecordNotFoundException {
 
         Optional<Driver> optionalDriver = driverRepository.findById(id);
@@ -80,5 +77,15 @@ public class DriverService {
 
         logger.info("Deleting all drivers");
         driverRepository.deleteAll();
+    }
+
+    public List<Driver> getAllActiveDrivers(boolean isActive) throws RecordNotFoundException {
+
+         List<Driver> byIsActive = driverRepository.findByIsActive(isActive);
+         if(!(byIsActive.isEmpty())){
+             return byIsActive;
+         }else {
+             throw new RecordNotFoundException("No driver is active now");
+         }
     }
 }
